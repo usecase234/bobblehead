@@ -1,11 +1,19 @@
 
+import os
 from PIL import Image
 import io
-import os
 
 def generate_bobblehead_image(user_img):
-    base_img = Image.open("assets/base_body.png").convert("RGBA")
-    logo_img = Image.open("assets/bobbleheads_logo.png").convert("RGBA")
+    # Find the path to the directory this script is in
+    base_dir = os.path.dirname(__file__)
+    assets_dir = os.path.join(base_dir, "assets")
+
+    # Construct full paths to images
+    base_img_path = os.path.join(assets_dir, "base_body.png")
+    logo_img_path = os.path.join(assets_dir, "bobbleheads_logo.png")
+
+    base_img = Image.open(base_img_path).convert("RGBA")
+    logo_img = Image.open(logo_img_path).convert("RGBA")
 
     head_img = user_img.convert("RGBA").resize((100, 100))
     head_position = ((base_img.width - head_img.width) // 2, 100)
