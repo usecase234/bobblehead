@@ -1,4 +1,5 @@
-fastapi
+ffastapi
 uvicorn[standard]
 pillow
 python-multipart
+requests
